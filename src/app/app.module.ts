@@ -10,7 +10,8 @@ import { RegisterComponent } from './register/register.component';
 import { UserService } from './services/index';
 import { AuthGuard } from './guards/auth.guard'
 
-import { MdButtonModule } from '@angular/material';
+import { MdButtonModule, MdInputModule } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -22,7 +23,9 @@ import { MdButtonModule } from '@angular/material';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MdButtonModule
+    MdButtonModule,
+    MdInputModule,
+    BrowserAnimationsModule
   ],
   providers: [
     UserService,
