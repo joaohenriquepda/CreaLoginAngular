@@ -1,4 +1,37 @@
-<p>
-  register works!
-</p>
-<a md-button routerLink="">Flat button</a>
+<div style="text-align:center">
+<form >
+  <p> 
+     <md-input-container class="example-full-width">
+      <input mdInput #username placeholder="Username" maxlength="10">
+      <md-hint align="end">{{username.value.length}}/10</md-hint>
+    </md-input-container>
+    </p>
+    <p>  
+      <md-input-container>
+          <input mdInput #password placeholder="Password" type="password" >
+      </md-input-container>
+    
+      <md-input-container>
+          <input mdInput #confirmPassword placeholder="Confirm Password" type="password" >
+      </md-input-container>
+    </p>
+    <p>  
+      <md-input-container>
+        <input mdInput #email placeholder="Email" type="email" >
+      </md-input-container>
+    </p>
+        <p>  
+      <md-input-container>
+        <input mdInput #telephone placeholder="Telephone" type="tel" pattern="^\d{4}-\d{3}-\d{4}$" >
+      </md-input-container>
+    </p>
+  </form>
+
+  <div class="button-row">
+      <button  md-raised-button type="submit">Register</button>
+    </div>
+    <p>
+      <button md-button routerLink="">Back</button> 
+    </p>
+
+</div>
