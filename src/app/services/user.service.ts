@@ -11,13 +11,12 @@ export class UserService {
   constructor(private http : Http) { }
 
    getAll(){
-     return this.http.get('http:localhost:3000/users', this.jwt()).map((response : Response)=> response.json());
+     return this.http.get('https://jsonplaceholder.typicode.com/users', this.jwt()).map((response : Response)=> response.json());
    }
 
    create(user: User){
-     return this.http.post('localhost:3000/users',user, this.jwt()).map((response : Response) => response.json()); 
- 
-   }
+     return this.http.post('http://localhost:3000/users',user, this.jwt()).map((response : Response) => response.json()); 
+    }
 
 
   private jwt(){

@@ -1,23 +1,23 @@
 <div style="text-align:center">
-<form >
+<form name="form" (ngSubmit)="register()" [formGroup]= "registerForm"  >
   <p> 
      <md-input-container class="example-full-width">
-      <input mdInput #username placeholder="Username" maxlength="10">
+      <input mdInput placeholder="Username" maxlength="10"  name="username" formControlName="username">
       <md-hint align="end">{{username.value.length}}/10</md-hint>
     </md-input-container>
     </p>
     <p>  
       <md-input-container>
-          <input mdInput #password placeholder="Password" type="password" >
+          <input mdInput #password placeholder="Password" type="password" [formControl]= "password" >
       </md-input-container>
     
       <md-input-container>
-          <input mdInput #confirmPassword placeholder="Confirm Password" type="password" >
+          <input mdInput #confirmPassword placeholder="Confirm Password" type="password" [formControl]="confirm_password" >
       </md-input-container>
     </p>
     <p>  
       <md-input-container>
-        <input mdInput #email placeholder="Email" type="email" >
+        <input mdInput #email placeholder="Email" type="email" [formControl]="email" >
       </md-input-container>
     </p>
         <p>  
@@ -25,13 +25,16 @@
         <input mdInput #telephone placeholder="Telephone" type="tel" pattern="^\d{4}-\d{3}-\d{4}$" >
       </md-input-container>
     </p>
+      <div class="button-row">
+      <button  md-raised-button >Register</button>
+    </div>
   </form>
 
-  <div class="button-row">
-      <button  md-raised-button type="submit">Register</button>
-    </div>
+
     <p>
       <button md-button routerLink="">Back</button> 
     </p>
+    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+
 
 </div>
