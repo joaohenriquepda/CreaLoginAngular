@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router  } from '@angular/router'; 
-import { FormGroup, FormBuilder,FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder,Validators } from '@angular/forms';
 
-
+import { User } from '../models/index'
 import { UserService } from '../services/index'
 
 @Component({
@@ -12,49 +12,46 @@ import { UserService } from '../services/index'
 })
 export class RegisterComponent implements OnInit {
 
-  model: any={};
+  model: User;
   loading = false;
   registerForm: FormGroup;
-
-
-
+  username: string = '';
+  // password: string = '';
+  // password_confirmation: string='';
 
   constructor(
     private router: Router,
     private userService: UserService,
     private fb: FormBuilder,
 
-  ) { }
+  ) { 
+    this.registerForm = fb.group({
+      'username':[null, Validators.required] ,
+      'password':[null,Validators.compose([Validators.required])],
+      'password_confirmation': [null,Validators.required],
+      'email': [null,Validators.compose([Validators.email,Validators.required])]
+    })
+  }
 
   ngOnInit() {
     console.log("aqui");
     this.userService.getAll().subscribe(
       data =>{
-        console.log(data);
-        
-      },
+        // console.log(data);
+       },
       erro=>{
       console.log(erro.json());
-      
-    })
-
-
-    this.registerForm =  this.fb.group({
-      username:'',
-      password:'',
-      password_confirmation: '',
-      email: '',
     })
   }
 
-  register(){
-    console.log("aqui");
-    
+  register(user: User){
+    console.log(user);
+    this.model = user;   
     this.loading = true;
     this.userService.create(this.model)
       .subscribe(
         data=>{
-          console.log(data.json);
+          console.log(data);
           this.router.navigate(['/login']);
          }, 
         erro=>{
@@ -63,8 +60,4 @@ export class RegisterComponent implements OnInit {
         }
       );
   }
-
-  createGroup
-
-
 }

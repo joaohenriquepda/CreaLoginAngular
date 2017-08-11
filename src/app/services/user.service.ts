@@ -15,6 +15,7 @@ export class UserService {
    }
 
    create(user: User){
+     console.log(user);
      return this.http.post('http://localhost:3000/users',user, this.jwt()).map((response : Response) => response.json()); 
     }
 
