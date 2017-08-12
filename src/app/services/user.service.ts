@@ -8,6 +8,7 @@ import { User } from '../models/index'
 @Injectable()
 export class UserService {
 
+  useris:{}  
   constructor(private http : Http) { }
 
    getAll(){
@@ -16,7 +17,10 @@ export class UserService {
 
    create(user: User){
      console.log(user);
-     return this.http.post('http://localhost:3000/users',user, this.jwt()).map((response : Response) => response.json()); 
+     this.useris ={
+      user
+     }
+     return this.http.post('http://localhost:3000/users', this.useris,this.jwt()).map((response : Response) => response.json()); 
     }
 
 
