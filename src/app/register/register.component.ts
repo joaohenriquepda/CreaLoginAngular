@@ -12,7 +12,7 @@ import { UserService } from '../services/index'
 })
 export class RegisterComponent implements OnInit {
 
-  model: User;
+  model: any = {};
   loading = false;
   registerForm: FormGroup;
   username: string = '';
@@ -30,8 +30,25 @@ export class RegisterComponent implements OnInit {
       'password':[null,Validators.compose([Validators.required])],
       'password_confirmation': [null,Validators.required],
       'email': [null,Validators.compose([Validators.email,Validators.required])]
-    })
+    },
+    {validator: this.checkIfMatchingPasswords('password', 'password_confirmation')}
+  )
   }
+
+
+checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
+          return (group: FormGroup) => {
+            let passwordInput = group.controls[passwordKey],
+                passwordConfirmationInput = group.controls[passwordConfirmationKey];
+            if (passwordInput.value !== passwordConfirmationInput.value) {
+              return passwordConfirmationInput.setErrors({notEquivalent: true})
+            }
+            else {
+                return passwordConfirmationInput.setErrors(null);
+            }
+          }
+        }
+  
 
   ngOnInit() {
     console.log("aqui");
@@ -46,7 +63,8 @@ export class RegisterComponent implements OnInit {
 
   register(user: User){
     console.log(user);
-    this.model = user;   
+    this.model = user;
+      
     this.loading = true;
     this.userService.create(this.model)
       .subscribe(

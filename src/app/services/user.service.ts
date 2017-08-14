@@ -8,7 +8,10 @@ import { User } from '../models/index'
 @Injectable()
 export class UserService {
 
+  user: any={};
+
   constructor(private http : Http) { }
+
 
    getAll(){
      return this.http.get('https://jsonplaceholder.typicode.com/users', this.jwt()).map((response : Response)=> response.json());
@@ -16,7 +19,8 @@ export class UserService {
 
    create(user: User){
      console.log(user);
-     return this.http.post('http://localhost:3000/users',user, this.jwt()).map((response : Response) => response.json()); 
+     this.user ={ user }
+     return this.http.post('http://localhost:3000/users',this.user, this.jwt()).map((response : Response) => response.json()); 
     }
 
 

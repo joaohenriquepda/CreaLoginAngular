@@ -8,25 +8,25 @@
     </p>
     <p>  
       <md-input-container>
-          <input mdInput #password placeholder="Password" type="password" name="password" formControlName="password" >
+          <input mdInput  placeholder="Password" type="password" name="password" formControlName="password" >
       </md-input-container>
     
       <md-input-container>
-          <input mdInput #passwordConfirm placeholder="Confirm Password"  name="password_confirmation" formControlName="password_confirmation" >
+          <input mdInput placeholder="Confirm Password" type="password" name="password_confirmation" formControlName="password_confirmation" >
       </md-input-container>
     </p>
     <p>  
       <md-input-container>
-        <input mdInput #email placeholder="Email" name="email" formControlName="email" >
+        <input mdInput placeholder="Email" name="email" formControlName="email" >
       </md-input-container>
     </p>
         <p>  
       <md-input-container>
-        <input mdInput #telephone placeholder="Telephone"  pattern="^\d{4}-\d{3}-\d{4}$" [disabled]="!registerForm.valid" >
+        <input mdInput #telephone placeholder="Telephone"  pattern="^\d{4}-\d{3}-\d{4}$"  >
       </md-input-container>
     </p>
-      <div class="button-row">
-      <button  md-raised-button >Register</button>
+      <div  class="button-row">
+      <button [disabled]="!registerForm.valid"    md-raised-button >Register</button>
     </div>
   </form>
 
