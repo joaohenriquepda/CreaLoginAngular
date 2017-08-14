@@ -15,10 +15,7 @@ export class RegisterComponent implements OnInit {
   model: any = {};
   loading = false;
   registerForm: FormGroup;
-  username: string = '';
-  // password: string = '';
-  // password_confirmation: string='';
-
+  
   constructor(
     private router: Router,
     private userService: UserService,

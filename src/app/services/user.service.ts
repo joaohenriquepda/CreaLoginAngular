@@ -10,6 +10,7 @@ export class UserService {
 
   user: any={};
 
+
   constructor(private http : Http) { }
 
 
@@ -19,7 +20,7 @@ export class UserService {
 
    create(user: User){
      console.log(user);
-     this.user ={ user }
+     this.user = { user }
      return this.http.post('http://localhost:3000/users',this.user, this.jwt()).map((response : Response) => response.json()); 
     }
 
