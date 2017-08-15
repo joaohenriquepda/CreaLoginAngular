@@ -9,12 +9,12 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpModule } from '@angular/http';
 
-import { UserService } from './services/index';
+import { UserService, AuthenticationService } from './services/index';
 import { AuthGuard } from './guards/auth.guard'
 
 import { MdButtonModule, MdInputModule } from '@angular/material';
 import { BaseRequestOptions } from '@angular/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule }    from '@angular/forms';
 
 
@@ -33,12 +33,14 @@ import { FormsModule }    from '@angular/forms';
     MdInputModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+
   ],
   providers: [
     UserService,
     AuthGuard,
-    BaseRequestOptions
+    BaseRequestOptions,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

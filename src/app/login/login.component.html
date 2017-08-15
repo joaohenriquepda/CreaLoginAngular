@@ -1,20 +1,21 @@
 
 <div style="text-align:center">
-<form class=""  >
+<form class="" [formGroup]="loginForm" >
     <p>
       <md-input-container class="">
-        <input mdInput placeholder="CPF">
+        <input mdInput placeholder="Email" type="email" formControlName="email" >
       </md-input-container>
    </p>
       <md-input-container class="example-full-width">
-        <input mdInput placeholder="Password">
+        <input mdInput placeholder="Password"  type="password" formControlName="password">
       </md-input-container>
    
     <div class="button-row">
-      <button  md-raised-button>Login</button>
+      <button [disabled]="!loginForm.valid"  md-raised-button>Login</button>
     </div>
     <p>
-      <button md-button routerLink="register">Register</button> 
+      
     </p>
     </form>
+    <button    md-button routerLink="register">Register</button> 
 </div>
